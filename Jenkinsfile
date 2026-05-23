@@ -22,29 +22,29 @@ pipeline {
 
         stage('Build') {
             steps {
-                sh 'mvn clean compile'
+                bat 'mvn clean compile'
             }
         }
 
         stage('Test') {
             steps {
-                sh 'mvn test'
+                bat 'mvn test'
             }
         }
 
         stage('Package') {
             steps {
-                sh 'mvn clean package -DskipTests'
+                bat 'mvn clean package -DskipTests'
             }
         }
 
         stage('Build Docker Image') {
             steps {
-                sh 'docker build -t $DOCKER_IMAGE:$DOCKER_TAG .'
+                bat 'docker build -t $DOCKER_IMAGE:$DOCKER_TAG .'
             }
         }
 
-        stage('Push Docker Image') {
+        stage('Pubat Docker Image') {
             steps {
                 withCredentials([usernamePassword(
                     credentialsId: 'dockerCreds',
@@ -52,10 +52,10 @@ pipeline {
                     passwordVariable: 'Password'
                 )]) {
 
-                    sh '''
+                    bat '''
                     echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin
 
-                    docker push $DOCKER_IMAGE:$DOCKER_TAG
+                    docker pubat $DOCKER_IMAGE:$DOCKER_TAG
                     '''
                 }
             }
@@ -64,7 +64,7 @@ pipeline {
         stage('Deploy to Kubernetes') {
             steps {
 
-                sh '''
+                bat '''
                 sed -i "s|image: .*|image: $DOCKER_IMAGE:$DOCKER_TAG|g" deployment.yaml
 
                 kubectl apply -f deployment.yaml
