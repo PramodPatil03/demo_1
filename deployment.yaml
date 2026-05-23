@@ -2,25 +2,25 @@ apiVersion: apps/v1
 kind: Deployment
 
 metadata:
-  name: java-app-deployment
+  name: demo_1-deployment
 
 spec:
-  replicas: 2
+  replicas: 1
 
   selector:
     matchLabels:
-      app: java-app
+      app: demo_1
 
   template:
     metadata:
       labels:
-        app: java-app
+        app: demo_1
 
     spec:
       containers:
-        - name: java-app
+        - name: demo_1
 
-          image: your-dockerhub-username/java-app:latest
+          image: pramod1906/demo_1:latest
 
           ports:
             - containerPort: 8080

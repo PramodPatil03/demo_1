@@ -7,7 +7,7 @@ pipeline {
     }
 
     environment {
-        DOCKER_IMAGE = "your-dockerhub-username/java-app"
+        DOCKER_IMAGE = "pramod1906/demo_1"
         DOCKER_TAG = "${BUILD_NUMBER}"
     }
 
@@ -15,8 +15,8 @@ pipeline {
 
         stage('Checkout') {
             steps {
-                git branch: 'main',
-                url: 'https://github.com/your-username/your-repo.git'
+                git branch: 'develop',
+                url: 'https://github.com/PramodPatil03/demo_1.git'
             }
         }
 
@@ -46,11 +46,10 @@ pipeline {
 
         stage('Push Docker Image') {
             steps {
-
                 withCredentials([usernamePassword(
-                    credentialsId: 'dockerhub-creds',
-                    usernameVariable: 'DOCKER_USER',
-                    passwordVariable: 'DOCKER_PASS'
+                    credentialsId: 'dockerCreds',
+                    usernameVariable: 'Username',
+                    passwordVariable: 'Password'
                 )]) {
 
                     sh '''

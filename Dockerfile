@@ -1,9 +1,9 @@
 FROM openjdk:27-ea-jdk
 
-WORKDIR /app
+WORKDIR /demo_1
 
-COPY target/*.jar app.jar
+COPY target/*.jar demo_1.jar
 
 EXPOSE 8080
 
-ENTRYPOINT ["java","-jar","app.jar"]
+ENTRYPOINT ["java","-jar","demo_1.jar"]
