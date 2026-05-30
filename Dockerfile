@@ -1,4 +1,4 @@
-FROM openjdk:27-ea-jdk
+FROM eclipse-temurin:17-jre-alpine
 
 WORKDIR /demo_1
 
