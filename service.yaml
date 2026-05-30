@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Service
 
 metadata:
-  name: demo_1-service
+  name: demo-1-service
 
 spec:
   selector:
