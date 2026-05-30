@@ -9,6 +9,7 @@ pipeline {
     environment {
         DOCKER_IMAGE = "pramod1906/demo_1"
         DOCKER_TAG = "${BUILD_NUMBER}"
+        KUBECONFIG = 'C:\\Users\\Pramo\\.kube\\config'
     }
 
     stages {
