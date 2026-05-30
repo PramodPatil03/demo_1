@@ -18,8 +18,7 @@ spec:
 
     spec:
       containers:
-        - name: demo_1
-
+        - name: demo-1
           image: pramod1906/demo_1:latest
 
           ports:

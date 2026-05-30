@@ -65,12 +65,13 @@ pipeline {
         stage('Deploy to Kubernetes') {
             steps {
 
-                bat '''
-                sed -i "s|image: .*|image: %DOCKER_IMAGE%:%DOCKER_TAG%|g" deployment.yaml
+                powershell '''
+                (Get-Content deployment.yaml) `
+                    -replace 'pramod1906/demo_1:latest', "pramod1906/demo_1:$env:DOCKER_TAG" |
+                    Set-Content deployment.yaml
 
                 kubectl apply -f deployment.yaml
-                kubectl apply -f service.yaml
-                '''
+                ''' 
             }
         }
     }
