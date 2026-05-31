@@ -9,12 +9,12 @@ spec:
 
   selector:
     matchLabels:
-      app: demo-1
+      app: demo_1
 
   template:
     metadata:
       labels:
-        app: demo-1
+        app: demo_1
 
     spec:
       containers:
