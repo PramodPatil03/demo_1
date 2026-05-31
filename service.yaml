@@ -6,7 +6,7 @@ metadata:
 
 spec:
   selector:
-    app: demo_1
+    app: demo-1
 
   ports:
     - protocol: TCP
