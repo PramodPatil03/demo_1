@@ -9,7 +9,7 @@ pipeline {
     environment {
         DOCKER_IMAGE = "pramod1906/demo_1"
         // DOCKER_TAG = "${BUILD_NUMBER}"
-        DOCKER_TAG = 1.0.0
+        DOCKER_TAG = 1.0
         KUBECONFIG = 'C:\\Users\\Pramo\\.kube\\config'
     }
 
