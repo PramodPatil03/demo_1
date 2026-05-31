@@ -8,7 +8,8 @@ pipeline {
 
     environment {
         DOCKER_IMAGE = "pramod1906/demo_1"
-        DOCKER_TAG = "${BUILD_NUMBER}"
+        // DOCKER_TAG = "${BUILD_NUMBER}"
+        DOCKER_TAG = 1.0.0
         KUBECONFIG = 'C:\\Users\\Pramo\\.kube\\config'
     }
 
@@ -21,16 +22,6 @@ pipeline {
             }
         }
 
-        stage('Debug Kubeconfig') {
-            steps {
-                bat '''
-                kubectl config view
-                kubectl config current-context
-                kubectl cluster-info
-                '''
-            }
-        }
-        
         stage('Build') {
             steps {
                 bat 'mvn clean compile'
